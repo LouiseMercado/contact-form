@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <form id="contactForm" onsubmit="return validateForm()" action="insert.php" method="post">
+        <input type="hidden" name="operation" value="insert">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject" required>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Feedback">Feedback</option>
+            <option value="Support">Support</option>
+        </select><br>
+
+        <h2>Gender:</h2>
+        <div class="checkbox-group">
+            <label for="male">
+                Male
+                <input type="radio" id="male" name="gender" value="male" required>
+            </label>
+            <label for="female">
+                Female
+                <input type="radio" id="female" name="gender" value="female" required>
+            </label>
+        </div>
+
+        <h2>Course Subjects (AMG):</h2>
+        <div class="checkbox-group">
+            <label for="subject1">
+                Integrative Programming
+                <input type="radio" id="subject1" name="subjects[]" value="Integrative Programming">
+            </label>
+            <label for="subject2">
+                System Integration & Architecture 1
+                <input type="radio" id="subject2" name="subjects[]" value="System Integration & Architecture 1">
+            </label>
+            <label for="subject3">
+                Networking 2
+                <input type="radio" id="subject3" name="subjects[]" value="Networking 2">
+            </label>
+            <label for="subject4">
+                Social & Professional Issues
+                <input type="radio" id="subject4" name="subjects[]" value="Social & Professional Issues">
+            </label>
+            <label for="subject5">
+                Fundamentals of Drawing
+                <input type="radio" id="subject5" name="subjects[]" value="Fundamentals of Drawing">
+            </label>
+            <label for="subject6">
+                Digital Arts, Photography & Print Media
+                <input type="radio" id="subject7" name="subjects[]" value="Photography & Print Media">
+            </label>
+        </div>
+
+        <h2>Message:</h2>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            // Example: Validate email format
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
